@@ -1,0 +1,28 @@
+{
+  "sensors": [
+    {
+      "humidity": 30,
+      "temperature": 25.79999924,
+      "timestamp": "99.99sec",
+      "id": 1
+    },
+    {
+      "humidity": 31,
+      "temperature": 26,
+      "timestamp": "485.93sec",
+      "id": 2
+    },
+    {
+      "humidity": 29,
+      "temperature": 25.89999962,
+      "timestamp": "15.03sec",
+      "id": 3
+    },
+    {
+      "humidity": 30,
+      "temperature": 25.89999962,
+      "timestamp": "30.25sec",
+      "id": 4
+    }
+  ]
+}
