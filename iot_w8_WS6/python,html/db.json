@@ -1,0 +1,91 @@
+{
+  "dht11": [
+    {
+      "temperature": null,
+      "humidity": null,
+      "ip": "172.20.10.7",
+      "id": 1
+    },
+    {
+      "temperature": 23.60000038,
+      "humidity": 51,
+      "ip": "172.20.10.7",
+      "ledStatus": false,
+      "id": 2
+    },
+    {
+      "temperature": 23.60000038,
+      "humidity": 51,
+      "ip": "172.20.10.7",
+      "ledStatus": true,
+      "id": 3
+    },
+    {
+      "temperature": 23.60000038,
+      "humidity": 51,
+      "ip": "172.20.10.7",
+      "ledStatus": false,
+      "id": 4
+    },
+    {
+      "temperature": 26.5,
+      "humidity": 48,
+      "ip": "172.20.10.7",
+      "id": 5
+    },
+    {
+      "temperature": 26.5,
+      "humidity": 48,
+      "ip": "172.20.10.7",
+      "id": 6
+    },
+    {
+      "temperature": 26.5,
+      "humidity": 47,
+      "ip": "172.20.10.7",
+      "id": 7
+    },
+    {
+      "temperature": 26.60000038,
+      "humidity": 47,
+      "ip": "172.20.10.7",
+      "id": 8
+    },
+    {
+      "temperature": 26.5,
+      "humidity": 47,
+      "ip": "172.20.10.7",
+      "id": 9
+    },
+    {
+      "temperature": 26.29999924,
+      "humidity": 45,
+      "ip": "172.20.10.7",
+      "id": 10
+    },
+    {
+      "temperature": 26.39999962,
+      "humidity": 45,
+      "ip": "172.20.10.7",
+      "id": 11
+    },
+    {
+      "temperature": 13.10000038,
+      "humidity": 151,
+      "ip": "172.20.10.7",
+      "id": 12
+    },
+    {
+      "temperature": 26.29999924,
+      "humidity": 47,
+      "ip": "172.20.10.7",
+      "id": 13
+    },
+    {
+      "temperature": 26.39999962,
+      "humidity": 46,
+      "ip": "172.20.10.7",
+      "id": 14
+    }
+  ]
+}
