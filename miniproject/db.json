@@ -1,0 +1,14 @@
+{
+    "CInformation": [
+        {
+            "id": 1,
+            "Name": "Frame",
+            "Money": 3455
+        },
+        {
+            "id": 2,
+            "Name": "Bank",
+            "Money": 1700
+        }
+    ]
+}
