@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/bg.png') }}");
+            background-repeat: no-repeat;
+            background-size: cover;     
+        }
+    </style>
+</head>
+
+<body >
+    
+    <div class="container">
+        <header>
+            <h1>น้ำดื่มร้านบังแบงค์</h1>
+        </header>
+        <div class="card-container">
+            <!-- Product cards -->
+            <div class="card" data-id="1" data-name="EST Cola" data-price="15.00">
+                <img src="{{ url_for('static', filename='images/1.jpg') }}" alt="Product 1" style="width: 300px; height: 300px;">
+                <center><h2>EST Cola</h2>
+                <p>15.00 Bath</p>
+                <button onclick="addToCart(1, 'EST Cola', 15.00)">Add to Cart</button></center>
+                <br>
+            </div>
+            <div class="card" data-id="2" data-name="Coca Cola" data-price="18.00">
+                <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Product 2" style="width: 300px; height: 300px;">
+                <center><h2>Coca Cola</h2>
+                <p>18.00 Bath</p>
+                <button onclick="addToCart(2, 'Coca Cola', 18.00)">Add to Cart</button></center>
+                <br>
+            </div>
+            <div class="card" data-id="3" data-name="PEPSI" data-price="14.00">
+                <img src="{{ url_for('static', filename='images/3.png') }}" alt="Product 3" style="width: 300px; height: 300px;">
+                <center><h2>PEPSI</h2>
+                <p>14.00 Bath</p>
+                <button onclick="addToCart(3, 'PEPSI', 14.00)">Add to Cart</button></center>
+                <br>
+            </div>
+            
+        </div>
+        <!-- Shopping cart display -->
+        <div id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total Price: <span id="cart-total">0.00 Bath</span></p> 
+            <button onclick="checkout()">Buy</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for handling checkout and cart -->
+    <script>
+        
+        function goToInfoPage() {
+            // Redirect to the home page
+            window.location.href = '/info';
+        }
+
+
+        var cart = [];
+
+        function addToCart(id, name, price) {
+            var item = { id: id, name: name, price: price };
+            cart.push(item);
+            updateCartDisplay(); // Add this line to update the cart display
+        }
+
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            var cartItemsElement = document.getElementById('cart-items');
+            var cartTotalElement = document.getElementById('cart-total');
+
+            // Clear previous items
+            cartItemsElement.innerHTML = '';
+
+            // Display cart items
+            cart.forEach(function(item, index) {
+                var li = document.createElement('li');
+                li.textContent = item.name + ' - ' + item.price + 'Bath';
+                
+                // Add a button to remove the item from the cart
+                var removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.onclick = function() {
+                    removeFromCart(index);
+                };
+                
+                li.appendChild(removeButton);
+                
+                cartItemsElement.appendChild(li);
+            });
+
+            // Calculate and display total price
+            var total = cart.reduce(function(sum, item) {
+                return sum + item.price;
+            }, 0);
+
+            cartTotalElement.textContent = total.toFixed(2) + 'Bath';
+        }
+
+        function checkout() {
+            // Convert cart data to a JSON string
+            var cartData = JSON.stringify(cart);
+
+            // Redirect to the payment page with total price and cart data
+            window.location.href = '/payment?total_price=' + encodeURIComponent(getTotalPrice()) + '&cart_data=' + encodeURIComponent(cartData);
+        }
+        function getTotalPrice() {
+            return cart.reduce(function (sum, item) {
+                return sum + item.price;
+            }, 0).toFixed(2);
+        }
+
+    </script>
+</body>
+</html>

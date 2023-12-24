@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/payment.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/bg.png') }}");
+            background-repeat: no-repeat;
+            background-size: cover;     
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>หน้าชำระเงิน</h1>
+        <p>ราคาทั้งหมด : <span id="totalPrice">0.00 </span></p>
+        <p>จำนวนสินค้า: <span id="totalQuantity">0</span> ชิ้น </p>
+
+        <h2>รายละเอียดสินค้า</h2>
+        <ul id="cartDetails"></ul>
+        
+        <!-- Button to go back to the home page -->
+        <center><button onclick="goToHomePage()">กลับไปที่หน้าหลัก</button></center>
+    </div>
+
+    <!-- JavaScript for updating total price and cart details -->
+    <script>
+        // Parse the query string to get the total price and cart data
+        const urlParams = new URLSearchParams(window.location.search);
+        const totalPrice = urlParams.get('total_price');
+        const cartData = urlParams.get('cart_data');
+
+        // Update the total price element
+        const totalPriceElement = document.getElementById('totalPrice');
+        if (totalPrice) {
+            totalPriceElement.textContent = `${totalPrice} บาท`;
+        }
+
+        // Update the cart details
+        const cartDetailsElement = document.getElementById('cartDetails');
+        if (cartData) {
+            const cart = JSON.parse(cartData);
+            const totalQuantity = cart.length;
+
+            // Display cart details
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price} บาท`;
+                cartDetailsElement.appendChild(li);
+            });
+
+            // Update total quantity
+            const totalQuantityElement = document.getElementById('totalQuantity');
+            totalQuantityElement.textContent = totalQuantity;
+        }
+
+        // Function to navigate back to the home page
+        function goToHomePage() {
+            // Redirect to the home page
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
